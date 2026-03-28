@@ -16,16 +16,16 @@ export const goodsFromServer = [
   'Garlic',
 ];
 
+enum SortType {
+  none = '',
+  alphabetically = 'alphabetically',
+  bylength = 'bylength',
+}
+
 export const App: React.FC = () => {
-  const [sort, setSort] = useState('');
+  const [sort, setSort] = useState(SortType.none);
   const [reversed, setReversed] = useState(false);
   const goods = [...goodsFromServer];
-
-  enum SortType {
-    none = '',
-    alphabetically = 'alphabetically',
-    bylength = 'bylength',
-  }
 
   if (sort === SortType.alphabetically) {
     goods.sort((a, b) => a.localeCompare(b));
